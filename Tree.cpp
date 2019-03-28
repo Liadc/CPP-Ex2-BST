@@ -50,7 +50,6 @@ void Tree::Destroy(Node* curr){ //implementation of recursive destroyer.
   Destroy(curr->getLeft());
   Destroy(curr->getRight());
   delete curr;
-  curr = NULL;
 }
 
 Node* Tree::getRoot(){
@@ -99,7 +98,6 @@ void Tree::remove(int i){
   if(_size==1){
     _size--;
     delete _root;
-    _root = NULL;
     return;
   } 
     Node* toRemove = find(i);
@@ -126,7 +124,6 @@ void Tree::remove(int i){
           parentOf->setLeft(toRemove->getRight());
         }
         delete toRemove;
-        toRemove = NULL;
         _size--;
         return;
       
@@ -139,7 +136,6 @@ void Tree::remove(int i){
           parentOf->setLeft(toRemove->getLeft());
         }
         delete toRemove;
-        toRemove = NULL;
         _size--;
         return;
       } else{
@@ -156,7 +152,6 @@ void Tree::remove(int i){
           concat->setLeft(toRemove->getLeft());
           parentOf->setRight(toRemove->getRight());
           delete toRemove;
-          toRemove = NULL;
           _size--;
           return;
         } else{
@@ -168,7 +163,6 @@ void Tree::remove(int i){
           concat->setRight(toRemove->getRight()); 
           parentOf->setLeft(toRemove->getLeft());
           delete toRemove;
-          toRemove = NULL;
           _size--;
           return;
         }
@@ -179,14 +173,12 @@ void Tree::remove(int i){
         //only left child.
         _root = toRemove->getLeft();
         delete toRemove;
-        toRemove = NULL;
         _size--;
       }
       else if(toRemove->getLeft() == NULL && toRemove->getRight() != NULL){
         //only right child.
         _root = toRemove->getRight();
         delete toRemove;
-        toRemove = NULL;
         _size--;
       }
       else{ //has 2 childs.
@@ -197,7 +189,6 @@ void Tree::remove(int i){
         concat->setLeft(toRemove->getLeft());
         _root = toRemove->getRight();
         delete toRemove;
-        toRemove = NULL;
         _size--;
       }
     }
