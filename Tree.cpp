@@ -108,8 +108,13 @@ void Tree::remove(int i){
       bool toRemoveIsRightChild = toRemove->getData() > parentOf->getData();
       if(toRemove->getLeft() == NULL && toRemove->getRight() == NULL){
         //no childs. just deletes the node.
+        if(toRemoveIsRightChild){
+          parentOf->setRight(NULL);
+        }
+        else{
+          parentOf->setLeft(NULL);
+        }
         delete toRemove;
-        toRemove = NULL;
         _size--;
       }
       else if(toRemove->getRight() != NULL && toRemove ->getLeft()==NULL){
