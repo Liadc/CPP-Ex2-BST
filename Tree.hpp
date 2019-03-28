@@ -37,7 +37,6 @@ namespace ariel{
     private:
       Node* find(int i); //finds i inside the tree
       void printRecursive(Node* curr);
-      Node* findRecursive(Node* curr,int i); //finds i inside the tree recursively
       void Destroy(Node* curr);
       
   };

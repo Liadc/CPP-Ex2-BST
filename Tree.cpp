@@ -272,25 +272,21 @@ void Tree::printRecursive(Node* curr){ //IN-ORDER recursive printing.
 
 Node* Tree::find(int i){ //finds i inside the tree, returns the pointer to a node containing i.
 // throws exception otherwise. 
-  if(this->size() == 0 ){
+  if(size() == 0 ){
     throw invalid_argument("Cannot find in an empty tree");
   }
-    return findRecursive(this->getRoot(), i);
+  Node* curr = getRoot();
+  while(curr!=NULL){
+    if(curr->getData() == i){
+      return curr;
+    }
+    else if(curr->getData()>i){
+      curr = curr->getLeft();
+    }
+    else{
+      curr = curr->getRight();
+    }
+  }
+  throw runtime_error("Cannot find requested node."); //traverse through tree, did not find i.
 }
 
-Node* Tree::findRecursive(Node* curr,int i){ //finds i inside the tree recursively.
-  if(curr->getData()==i){
-       return curr;
-  }else if(curr == NULL || (curr->getLeft() == NULL && curr-> getRight() == NULL)){ //there are no childs
-    throw runtime_error("Cannot find requested node.");
-  }
-  else if(i > curr->getData() && curr->getRight() != NULL){
-    return findRecursive(curr->getRight(), i);
-  }
-  else if(i < curr->getData() && curr->getLeft() != NULL){
-    return findRecursive(curr->getLeft(), i);
-  }
-  else{ //all other combinations. i.e: i> curr.data but there is no right child for example.
-    throw runtime_error("Cannot find the requested node.");
-  }
-}
