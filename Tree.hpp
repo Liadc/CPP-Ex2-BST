@@ -7,7 +7,6 @@ namespace ariel{
       Node* right;
     public:
       Node(int data); //constructor
-      // ~Node(); //destructor
       Node* getLeft(); 
       Node* getRight(); 
       void setLeft(Node* left);
